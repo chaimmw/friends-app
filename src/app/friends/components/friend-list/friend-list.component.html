@@ -1,1 +1,15 @@
-<p>friend-list works!</p>
+
+
+<div class="container">
+
+  <mat-grid-list cols="4" rowHeight="200">
+
+    <ng-container *ngFor="let friend of friendWData">
+
+      <mat-grid-tile>
+        <app-friend-card [friend]="friend"></app-friend-card>
+      </mat-grid-tile>
+    </ng-container>
+
+  </mat-grid-list>
+</div>

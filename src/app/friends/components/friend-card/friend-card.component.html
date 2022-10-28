@@ -1,1 +1,18 @@
-<p>friend-card works!</p>
+<ng-container *ngIf="friend">
+
+
+  <mat-card class="friend-card">
+    <mat-card-title>{{friend.name}}</mat-card-title>
+    <mat-card-content>
+      <p>Weight: {{friend.weight}}</p>
+      <p>Age: {{friend.weight}}</p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-button>Edit</button>
+      <button mat-button>Delete</button>
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</ng-container>
