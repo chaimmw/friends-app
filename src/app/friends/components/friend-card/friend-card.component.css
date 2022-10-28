@@ -1,6 +1,6 @@
 .friend-card {
-  max-width: 200px;
+  width: 250px;
   border: gray 1px solid;
-  padding: 5px;
+  padding: 15px;
   margin: 10px;
 }

@@ -6,11 +6,19 @@
     <mat-card-content>
       <p>Weight: {{friend.weight}}</p>
       <p>Age: {{friend.weight}}</p>
+
+      <ng-container *ngIf="friend.friendsNames.length > 0">
+
+        <mat-chip-list aria-label="My Friends">
+          <mat-chip *ngFor="let frnd of friend.friendsNames">{{frnd}}</mat-chip>
+        </mat-chip-list>
+      </ng-container>
+
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <mat-card-actions>
-      <button mat-button>Edit</button>
-      <button mat-button>Delete</button>
+      <button mat-button (click)="editFriend(friend)">Edit</button>
+      <button mat-button (click)="deleteFriend(friend)">Delete</button>
     </mat-card-actions>
     <mat-card-footer>
     </mat-card-footer>

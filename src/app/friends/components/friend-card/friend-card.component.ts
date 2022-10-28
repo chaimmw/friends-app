@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EventActions, FriendAction } from 'src/app/models/actions.model';
 import { FriendViewItem } from 'src/app/models/friend.model';
 
 @Component({
@@ -10,27 +11,27 @@ import { FriendViewItem } from 'src/app/models/friend.model';
 export class FriendCardComponent implements OnInit {
 
   @Input() friend: FriendViewItem | undefined;
-  @Output() actionEvent = new EventEmitter<{ type: 'edit' | 'delete', friend: FriendViewItem}>();
+  @Output() actionEvent = new EventEmitter<FriendAction>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  editFriend(friend: FriendViewItem) {
-    const action = {
+  editFriend(friend: FriendViewItem): void {
+    const action: FriendAction = {
       friend,
-      type: 'edit'
+      type: EventActions.edit
     };
 
     this.actionEvent.emit(action);
 
   }
 
-  deleteFriend(friend: FriendViewItem) {
-    const action = {
+  deleteFriend(friend: FriendViewItem): void {
+    const action: FriendAction = {
       friend,
-      type: 'delete'
+      type: EventActions.delete
     };
 
     this.actionEvent.emit(action);
