@@ -9,6 +9,11 @@ const { selectAll } = fromFriends.adapter.getSelectors();
 
 export const allFriends = selectAll;
 
+export const getAllFriends = createSelector(
+  selectFriendsState,
+  allFriends
+);
+
 export const getFriends = (friendIds: number[]) =>
   createSelector(selectFriendsState, (state) =>
     friendIds.map((id) => state.entities[id])
