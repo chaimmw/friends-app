@@ -5,6 +5,18 @@ import { FriendCardComponent } from './components/friend-card/friend-card.compon
 import { FriendFormContainerComponent } from './components/friend-form-container/friend-form-container.component';
 import { FriendListComponent } from './components/friend-list/friend-list.component';
 
+import { StoreModule } from '@ngrx/store';
+import * as fromFriends from './friends-store/friends.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { FriendsEffects } from './friends-store/friends.effects';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -15,7 +27,18 @@ import { FriendListComponent } from './components/friend-list/friend-list.compon
     FriendListComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatInputModule,
+    MatGridListModule,
+    MatSelectModule,
+
+    StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),
+    EffectsModule.forFeature([FriendsEffects])
+  ],
+  exports: [FriendListComponent]
 })
 export class FriendsModule { }
