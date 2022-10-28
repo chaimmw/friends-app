@@ -16,6 +16,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+
+import { FriendService } from '../services/friend.service';
 
 
 
@@ -35,10 +38,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatGridListModule,
     MatSelectModule,
+    MatDividerModule,
+
 
     StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),
     EffectsModule.forFeature([FriendsEffects])
   ],
-  exports: [FriendListComponent]
+  exports: [FriendListComponent],
+  providers: [FriendService]
 })
 export class FriendsModule { }
