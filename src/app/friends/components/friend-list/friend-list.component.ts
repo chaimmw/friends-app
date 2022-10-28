@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Friend, FriendViewItem } from 'src/app/models/friend.model';
 import { FriendService } from 'src/app/services/friend.service';
 import { myFakeFriends } from 'src/assets/friends-data';
@@ -12,12 +12,16 @@ import { myFakeFriends } from 'src/assets/friends-data';
 export class FriendListComponent implements OnInit {
 
   friends = myFakeFriends;
+  friends$: Observable<any>;
 
-  friendWData: FriendViewItem[] | undefined;
+  friendWData: FriendViewItem[];
   constructor(private friendService: FriendService) { }
 
   ngOnInit(): void {
     this.friendWData = this.friends.map(friend => this.addFriendViewData(friend));
+    this.friends$ = this.friendService.allFriends$.pipe(
+      map((buddies) => buddies.map((buddy) => this.addFriendViewData(buddy as Friend)))
+    );
   }
 
 

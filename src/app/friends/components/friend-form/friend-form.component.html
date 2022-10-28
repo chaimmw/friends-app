@@ -1,1 +1,39 @@
-<p>friend-form works!</p>
+
+
+
+<div [formGroup]="friendForm" class="friend-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControlName]="'name'">
+
+  </mat-form-field>
+  <ng-container *ngIf="getFieldTouched('name')">
+    <mat-error *ngIf="checkFieldError('name', 'required')">
+      The name is required
+    </mat-error>
+  </ng-container>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Age</mat-label>
+    <input type="number" matInput [formControlName]="'age'">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Weight</mat-label>
+    <input type="number" matInput [formControlName]="'weight'">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Who are your friends</mat-label>
+    <mat-select [formControlName]="'friends'" multiple>
+      <mat-option *ngFor="let frnd of availableFriends" [value]="frnd.id">
+        {{frnd.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button (click)="submitForm()" mat-raised-button color="primary">Add Friend</button>
+  </div>
+</div>
+

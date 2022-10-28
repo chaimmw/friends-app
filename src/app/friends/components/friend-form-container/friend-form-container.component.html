@@ -1,1 +1,4 @@
-<p>friend-form-container works!</p>
+<ng-container *ngIf="friends$ | async as friends">
+  <app-friend-form [availableFriends]="friends" (formComplete)="formSubmit($event)"></app-friend-form>
+</ng-container>
+

@@ -4,7 +4,7 @@
 
   <mat-grid-list cols="4" rowHeight="300">
 
-    <ng-container *ngFor="let friend of friendWData">
+    <ng-container *ngFor="let friend of friends$ | async">
 
       <mat-grid-tile>
         <app-friend-card [friend]="friend"></app-friend-card>
@@ -12,4 +12,8 @@
     </ng-container>
 
   </mat-grid-list>
+</div>
+
+<div class="container">
+  <app-friend-form-container></app-friend-form-container>
 </div>

@@ -17,8 +17,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FriendService } from '../services/friend.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,6 +32,8 @@ import { FriendService } from '../services/friend.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     MatButtonModule,
     MatCardModule,
@@ -39,6 +42,7 @@ import { FriendService } from '../services/friend.service';
     MatGridListModule,
     MatSelectModule,
     MatDividerModule,
+    BrowserAnimationsModule,
 
 
     StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),

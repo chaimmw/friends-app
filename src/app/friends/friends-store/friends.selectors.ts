@@ -5,7 +5,7 @@ export const selectFriendsState = createFeatureSelector<fromFriends.State>(
   fromFriends.friendsFeatureKey
 );
 
-const { selectAll } = fromFriends.adapter.getSelectors();
+const { selectAll, selectEntities } = fromFriends.adapter.getSelectors();
 
 export const allFriends = selectAll;
 
@@ -21,3 +21,8 @@ export const getFriends = (friendIds: number[]) =>
 
 export const getFriend = (id: number) =>
   createSelector(selectFriendsState, (state) => state.entities[id]);
+
+export const getAllEntities = createSelector(
+  selectFriendsState,
+  selectEntities
+);

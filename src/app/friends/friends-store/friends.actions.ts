@@ -13,7 +13,7 @@ export const addFriend = createAction(
 
 export const deleteFriend = createAction(
   '[Friends] Delete Friend',
-  props<{ id: number }>()
+  props<{ id: string }>()
 );
 
 export const updateFriend = createAction(
