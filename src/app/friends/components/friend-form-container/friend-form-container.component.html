@@ -1,4 +1,4 @@
 <ng-container *ngIf="friends$ | async as friends">
-  <app-friend-form [availableFriends]="friends" (formComplete)="formSubmit($event)"></app-friend-form>
+  <app-friend-form [availableFriends]="friends" [friend]="selectedFriend$ | async" (formComplete)="formSubmit($event)"></app-friend-form>
 </ng-container>
 

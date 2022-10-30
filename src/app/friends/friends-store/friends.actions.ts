@@ -18,13 +18,13 @@ export const deleteFriend = createAction(
 
 
 export const editFriend = createAction(
-  '[Friends] Update Friend',
+  '[Friends] Edit Friend',
   props<{ id: string }>()
 );
 
 export const updateFriend = createAction(
   '[Friends] Update Friend',
-  props<{ friendUpdate: Update<Friend> }>()
+  props<{ update: Update<Friend> }>()
 );
 
 

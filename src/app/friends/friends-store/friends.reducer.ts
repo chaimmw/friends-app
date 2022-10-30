@@ -26,7 +26,7 @@ export const reducer = createReducer(
   initialState,
   on(FriendsActions.loadFriendss, state => adapter.addMany(myFakeFriends, state)),
   on(FriendsActions.addFriend, (state, { friend }) => adapter.addOne(friend, state)),
-  on(FriendsActions.updateFriend, (state, { friendUpdate }) => adapter.updateOne(friendUpdate, state)),
+  on(FriendsActions.updateFriend, (state, { update }) => adapter.updateOne(update, { ...state, selectedId: null})),
   on(FriendsActions.deleteFriend, (state, { id }) => adapter.removeOne(id, state)),
   on(FriendsActions.editFriend, (state, { id }) => ({ ...state, selectedId: id}))
 );

@@ -29,11 +29,11 @@ export class FriendService {
   }
 
   deleteFriend(id: string) {
-    this.store.dispatch(friendActions.deleteFriend({ id }))
+    this.store.dispatch(friendActions.deleteFriend({ id }));
   }
 
   editFriend(id: string) {
-    this.store.dispatch(friendActions.editFriend({ id }))
+    this.store.dispatch(friendActions.editFriend({ id }));
   }
 
   updateFriend(id: string, friend: Partial<Friend>) {
@@ -42,7 +42,7 @@ export class FriendService {
       changes: friend
     };
 
-    this.store.dispatch(friendActions.updateFriend({ friendUpdate: payload}))
+    this.store.dispatch(friendActions.updateFriend({ update: payload}));
   }
 
 }

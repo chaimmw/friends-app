@@ -33,7 +33,9 @@
   </mat-form-field>
 
   <div class="button-row">
-    <button (click)="submitForm()" mat-raised-button color="primary">Add Friend</button>
+    <button (click)="submitForm()" mat-raised-button color="primary">
+      {{ isEdit ? 'Edit' : 'Add' }} Friend
+    </button>
   </div>
 </div>
 
