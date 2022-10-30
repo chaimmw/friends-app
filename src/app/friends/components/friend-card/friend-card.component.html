@@ -7,12 +7,24 @@
       <p>Weight: {{friend.weight}}</p>
       <p>Age: {{friend.age}}</p>
 
-      <ng-container *ngIf="friend.friendsNames && friend.friendsNames.length > 0">
+      <div class="friend-chips">
 
-        <mat-chip-list aria-label="My Friends">
-          <mat-chip *ngFor="let frnd of friend.friendsNames">{{frnd}}</mat-chip>
-        </mat-chip-list>
-      </ng-container>
+        <ng-container *ngIf="friend.friendsNames && friend.friendsNames.length > 0">
+
+          <mat-chip-list aria-label="My Friends">
+            <ng-container *ngFor="let frnd of friend.friendsNames; let i = index">
+
+              <mat-chip *ngIf="i <= 2">{{frnd}}</mat-chip>
+            </ng-container>
+
+          </mat-chip-list>
+
+          <ng-container *ngIf="friend.friendsNames.length > 3">
+            <p>These are just some of my friends</p>
+          </ng-container>
+
+        </ng-container>
+      </div>
 
     </mat-card-content>
     <mat-divider inset></mat-divider>
