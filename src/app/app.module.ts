@@ -8,6 +8,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FriendsModule } from './friends/friends.module';
 
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,6 +17,7 @@ import { FriendsModule } from './friends/friends.module';
   imports: [
     BrowserModule,
     FriendsModule,
+    MatButtonModule,
     StoreModule.forRoot({}, {
       metaReducers: !environment.production ? [] : [],
       runtimeChecks: {

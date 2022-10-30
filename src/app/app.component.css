@@ -1,0 +1,7 @@
+
+.add-button-row {
+  display: flex;
+  justify-content: end;
+  padding: 20px;
+  margin-right: 200px;
+}

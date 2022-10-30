@@ -48,7 +48,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),
     EffectsModule.forFeature([FriendsEffects])
   ],
-  exports: [FriendListComponent],
+  exports: [FriendListComponent, FriendFormContainerComponent],
   providers: [FriendService]
 })
 export class FriendsModule { }

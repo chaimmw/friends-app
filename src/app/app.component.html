@@ -1,1 +1,9 @@
-<app-friend-list></app-friend-list>
+<div class="add-button-row">
+  <button mat-raised-button color="primary" (click)="toggleList()">
+    {{ showList ? "Add Friend" : "Show List" }}
+  </button>
+</div>
+
+<app-friend-form-container *ngIf="!showList"></app-friend-form-container>
+
+<app-friend-list *ngIf="showList"></app-friend-list>
