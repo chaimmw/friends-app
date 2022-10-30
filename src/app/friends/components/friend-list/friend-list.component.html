@@ -4,11 +4,15 @@
 
   <mat-grid-list cols="4" rowHeight="300">
 
-    <ng-container *ngFor="let friend of friends$ | async">
+    <ng-container *ngIf="friends$ | async as friends">
 
-      <mat-grid-tile>
-        <app-friend-card [friend]="friend"></app-friend-card>
-      </mat-grid-tile>
+
+      <ng-container *ngFor="let friend of friends">
+
+        <mat-grid-tile>
+          <app-friend-card [friend]="friend"></app-friend-card>
+        </mat-grid-tile>
+      </ng-container>
     </ng-container>
 
   </mat-grid-list>

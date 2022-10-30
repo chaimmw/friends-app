@@ -5,9 +5,9 @@
     <mat-card-title>{{friend.name}}</mat-card-title>
     <mat-card-content>
       <p>Weight: {{friend.weight}}</p>
-      <p>Age: {{friend.weight}}</p>
+      <p>Age: {{friend.age}}</p>
 
-      <ng-container *ngIf="friend.friendsNames.length > 0">
+      <ng-container *ngIf="friend.friendsNames && friend.friendsNames.length > 0">
 
         <mat-chip-list aria-label="My Friends">
           <mat-chip *ngFor="let frnd of friend.friendsNames">{{frnd}}</mat-chip>

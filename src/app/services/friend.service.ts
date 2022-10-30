@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import * as friendSelectors from '../friends/friends-store/friends.selectors';
 import * as friendActions from '../friends/friends-store/friends.actions';
 import { Friend } from '../models/friend.model';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 @Injectable()
 export class FriendService {
@@ -14,7 +14,7 @@ export class FriendService {
       id: key
     })))
   );
-  getMyFriends = friendSelectors.getFriends;
+  getMyFriends = (friendIds: string[]) => this.store.select(friendSelectors.getFriends(friendIds));
 
 
   constructor(private store: Store) {
