@@ -26,3 +26,7 @@ export const getAllEntities = createSelector(
   selectFriendsState,
   selectEntities
 );
+
+export const getSelectedFriendId = createSelector(selectFriendsState, (state) => state.selectedId);
+export const getSelectedFriend = createSelector(selectFriendsState, (state) => state.selectedId ? state.entities[state.selectedId] : null);
+

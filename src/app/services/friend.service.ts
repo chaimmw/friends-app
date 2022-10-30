@@ -15,6 +15,7 @@ export class FriendService {
     })))
   );
   getMyFriends = (friendIds: string[]) => this.store.select(friendSelectors.getFriends(friendIds));
+  selectedFriend = this.store.select(friendSelectors.getSelectedFriend);
 
 
   constructor(private store: Store) {
@@ -29,6 +30,10 @@ export class FriendService {
 
   deleteFriend(id: string) {
     this.store.dispatch(friendActions.deleteFriend({ id }))
+  }
+
+  editFriend(id: string) {
+    this.store.dispatch(friendActions.editFriend({ id }))
   }
 
   updateFriend(id: string, friend: Partial<Friend>) {

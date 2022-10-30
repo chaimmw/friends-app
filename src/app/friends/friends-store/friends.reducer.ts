@@ -8,6 +8,7 @@ export const friendsFeatureKey = 'friends';
 
 export interface State extends EntityState<Friend> {
   friends: Friend[];
+  selectedId: string | null;
 }
 
 export const adapter: EntityAdapter<Friend> = createEntityAdapter<Friend>({
@@ -19,7 +20,7 @@ export function selectUserId(f: Friend): string {
   return f.name + f.age;
 }
 
-export const initialState: State = adapter.getInitialState({ friends: [] });
+export const initialState: State = adapter.getInitialState({ friends: [], selectedId: null });
 
 export const reducer = createReducer(
   initialState,
@@ -27,4 +28,5 @@ export const reducer = createReducer(
   on(FriendsActions.addFriend, (state, { friend }) => adapter.addOne(friend, state)),
   on(FriendsActions.updateFriend, (state, { friendUpdate }) => adapter.updateOne(friendUpdate, state)),
   on(FriendsActions.deleteFriend, (state, { id }) => adapter.removeOne(id, state)),
+  on(FriendsActions.editFriend, (state, { id }) => ({ ...state, selectedId: id}))
 );

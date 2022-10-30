@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin, map, Observable, of, switchMap, take } from 'rxjs';
+import { EventActions, FriendAction } from 'src/app/models/actions.model';
 import { Friend, FriendViewItem } from 'src/app/models/friend.model';
 import { FriendService } from 'src/app/services/friend.service';
 import { myFakeFriends } from 'src/assets/friends-data';
@@ -26,7 +27,7 @@ export class FriendListComponent implements OnInit {
               take(1),
               map((myBuddies) => ({
                 ...myBud,
-                friendsNames: myBuddies.map((pal) => pal?.name),
+                friendsNames: myBuddies.map((pal) => pal?.name).filter((pal) => !!pal), // just to check that they were not deleted
               }))
             );
           } else {
@@ -40,5 +41,14 @@ export class FriendListComponent implements OnInit {
         return forkJoin(getFriendData);
       })
     );
+  }
+
+  handleEvent(cardAction: FriendAction) {
+    if (cardAction.type === EventActions.edit) {
+      this.friendService.editFriend(cardAction.friend.id as string);
+    } else if (cardAction.type === EventActions.delete){
+      this.friendService.deleteFriend(cardAction.friend.id as string);
+
+    }
   }
 }

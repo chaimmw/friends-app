@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EventActions, FriendAction } from 'src/app/models/actions.model';
+import { EventActions, EventActionType, FriendAction } from 'src/app/models/actions.model';
 import { FriendViewItem } from 'src/app/models/friend.model';
 
 @Component({
@@ -8,33 +8,17 @@ import { FriendViewItem } from 'src/app/models/friend.model';
   styleUrls: ['./friend-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FriendCardComponent implements OnInit {
+export class FriendCardComponent {
 
-  @Input() friend: FriendViewItem | undefined;
+  @Input() friend: any;
   @Output() actionEvent = new EventEmitter<FriendAction>();
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  editFriend(friend: FriendViewItem): void {
-    const action: FriendAction = {
-      friend,
-      type: EventActions.edit
-    };
-
-    this.actionEvent.emit(action);
-
-  }
-
-  deleteFriend(friend: FriendViewItem): void {
-    const action: FriendAction = {
-      friend,
-      type: EventActions.delete
-    };
-
-    this.actionEvent.emit(action);
+  sendAction(friend: FriendViewItem, type: EventActionType) {
+    this.actionEvent.emit({
+      type,
+      friend
+    });
   }
 
 }

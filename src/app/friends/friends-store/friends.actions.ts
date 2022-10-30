@@ -16,6 +16,12 @@ export const deleteFriend = createAction(
   props<{ id: string }>()
 );
 
+
+export const editFriend = createAction(
+  '[Friends] Update Friend',
+  props<{ id: string }>()
+);
+
 export const updateFriend = createAction(
   '[Friends] Update Friend',
   props<{ friendUpdate: Update<Friend> }>()

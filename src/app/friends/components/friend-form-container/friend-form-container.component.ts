@@ -12,12 +12,14 @@ export class FriendFormContainerComponent implements OnInit {
 
   friends$: Observable<Friend[]>;
   selectedFriend: any;
+  selectedFriend$: any;
   constructor(private friendsService: FriendService) { }
 
   ngOnInit(): void {
     this.friends$ = this.friendsService.allFriends$.pipe(
       map((buddies) => buddies.map((bud) => bud as Friend))
     );
+    this.selectedFriend$ = this.friendsService.selectedFriend;
   }
 
   formSubmit(data: any) {
