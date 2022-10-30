@@ -7,12 +7,17 @@
 
 mat-form-field {
   margin: 15px;
+  max-height: 20px;
 }
 
+.example-full-width {
+  width: 70%;
+  margin: 35px 15%
+}
 
 
 .button-row {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 25px;
 }

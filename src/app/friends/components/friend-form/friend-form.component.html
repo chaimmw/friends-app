@@ -6,24 +6,42 @@
     <mat-label>Name</mat-label>
     <input type="text" matInput [formControlName]="'name'">
 
+    <ng-container *ngIf="getFieldTouched('name')">
+      <mat-error *ngIf="checkFieldError('name', 'required')">
+        The name is required
+      </mat-error>
+    </ng-container>
   </mat-form-field>
-  <ng-container *ngIf="getFieldTouched('name')">
-    <mat-error *ngIf="checkFieldError('name', 'required')">
-      The name is required
-    </mat-error>
-  </ng-container>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Age</mat-label>
     <input type="number" matInput [formControlName]="'age'">
+
+    <ng-container *ngIf="getFieldTouched('age')">
+      <mat-error *ngIf="checkFieldError('age', 'required')">
+        The age is required
+      </mat-error>
+      <mat-error *ngIf="checkFieldError('age', 'min')">
+        That is very young, please enter a valid age
+      </mat-error>
+    </ng-container>
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Weight</mat-label>
     <input type="number" matInput [formControlName]="'weight'">
+
+    <ng-container *ngIf="getFieldTouched('weight')">
+      <mat-error *ngIf="checkFieldError('weight', 'required')">
+        The weight is required
+      </mat-error>
+      <mat-error *ngIf="checkFieldError('age', 'min')">
+        To much dieting? please enter a valid weight
+      </mat-error>
+    </ng-container>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Who are your friends</mat-label>
     <mat-select [formControlName]="'friends'" multiple>
       <mat-option *ngFor="let frnd of availableFriends" [value]="frnd.id">
@@ -32,10 +50,13 @@
     </mat-select>
   </mat-form-field>
 
-  <div class="button-row">
-    <button (click)="submitForm()" mat-raised-button color="primary">
-      {{ isEdit ? 'Edit' : 'Add' }} Friend
-    </button>
+  <div class="example-full-width">
+
+    <div class="button-row">
+      <button (click)="submitForm()" mat-raised-button color="primary">
+        {{ isEdit ? 'Edit' : 'Add' }} Friend
+      </button>
+    </div>
   </div>
 </div>
 

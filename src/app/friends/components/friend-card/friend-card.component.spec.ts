@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { myFakeFriends } from 'src/assets/friends-data';
 
 import { FriendCardComponent } from './friend-card.component';
 
 describe('FriendCardComponent', () => {
   let component: FriendCardComponent;
   let fixture: ComponentFixture<FriendCardComponent>;
+  const friend = {...myFakeFriends[0], friendsNames: []};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,4 +22,13 @@ describe('FriendCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit when an action is called', () => {
+    component.sendAction(friend, 'edit');
+
+    const eventSpy = spyOn(component.actionEvent, 'emit')
+
+    expect(eventSpy).toHaveBeenCalledWith({ type: 'edit', friend })
+
+  })
 });

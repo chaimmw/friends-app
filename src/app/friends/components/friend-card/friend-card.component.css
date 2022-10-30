@@ -11,7 +11,7 @@
 
 .card-actions-row {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 button.action-button.mat-raised-button {
