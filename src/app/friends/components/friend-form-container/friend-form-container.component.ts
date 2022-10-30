@@ -10,7 +10,6 @@ import { FriendService } from 'src/app/services/friend.service';
 })
 export class FriendFormContainerComponent implements OnInit {
   friends$: Observable<Friend[]>;
-  selectedFriend: any;
   selectedFriend$: Observable<Friend>;
   constructor(private friendsService: FriendService) {}
 
