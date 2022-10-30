@@ -27,7 +27,9 @@ export class FriendListComponent implements OnInit {
               take(1),
               map((myBuddies) => ({
                 ...myBud,
-                friendsNames: myBuddies.map((pal) => pal?.name).filter((pal) => !!pal), // just to check that they were not deleted
+                // just to check that they were not deleted
+                // until we can get the reducer update working
+                friendsNames: myBuddies.map((pal) => pal?.name).filter((pal) => !!pal),
               }))
             );
           } else {
@@ -48,7 +50,6 @@ export class FriendListComponent implements OnInit {
       this.friendService.editFriend(cardAction.friend.id as string);
     } else if (cardAction.type === EventActions.delete){
       this.friendService.deleteFriend(cardAction.friend.id as string);
-
     }
   }
 }
