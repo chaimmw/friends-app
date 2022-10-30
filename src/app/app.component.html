@@ -4,6 +4,6 @@
   </button>
 </div>
 
-<app-friend-form-container *ngIf="!showList"></app-friend-form-container>
+<app-friend-form-container *ngIf="!showList" (actionEnd)="toggleList()"></app-friend-form-container>
 
 <app-friend-list *ngIf="showList"></app-friend-list>

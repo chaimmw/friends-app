@@ -5,7 +5,7 @@ export const myFakeFriends: Friend[] = [
     name: 'George Washington',
     age: 300,
     weight: 250,
-    friends: ['Micheal Jordan55', 'Mickey Mouse8']
+    friends: ['Michael Jordan55', 'Mickey Mouse8']
   },
   {
     name: 'Micheal Jordan',
@@ -17,7 +17,7 @@ export const myFakeFriends: Friend[] = [
     name: 'Mickey Mouse',
     age: 8,
     weight: 26,
-    friends: ['Micheal Jordan55', 'Mickey Mouse8']
+    friends: ['Michael Jordan55', 'Mickey Mouse8']
   },
   {
     name: 'Donald Duck',
@@ -26,7 +26,7 @@ export const myFakeFriends: Friend[] = [
     friends: []
   },
   {
-    name: 'Thomas Jefferson',
+    name: 'Harry Potter',
     age: 300,
     weight: 166,
     friends: []

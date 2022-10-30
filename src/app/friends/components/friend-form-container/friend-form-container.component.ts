@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { map, Observable, take, tap } from 'rxjs';
 import { Friend } from 'src/app/models/friend.model';
 import { FriendService } from 'src/app/services/friend.service';
@@ -11,6 +11,7 @@ import { FriendService } from 'src/app/services/friend.service';
 export class FriendFormContainerComponent implements OnInit {
   friends$: Observable<Friend[]>;
   selectedFriend$: Observable<Friend>;
+  @Output() actionEnd = new EventEmitter();
   constructor(private friendsService: FriendService) {}
 
   ngOnInit(): void {
@@ -31,6 +32,6 @@ export class FriendFormContainerComponent implements OnInit {
         ),
         take(1)
       )
-      .subscribe();
+      .subscribe(() => this.actionEnd.emit());
   }
 }
