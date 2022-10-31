@@ -28,6 +28,7 @@ export class PieChartComponent  {
 
 
   buildChart(data: Friend[]) {
+    d3.select(this.chartContainer.nativeElement).select('svg').remove();
 
     this.svg = d3.select(this.chartContainer.nativeElement)
     .append("svg")
