@@ -1,4 +1,8 @@
 <div class="container">
+
+  <div class="title">
+    <mat-card-title>Please meet all of my friends</mat-card-title>
+  </div>
   <mat-grid-list cols="4">
     <ng-container *ngIf="friends$ | async as friends">
       <ng-container *ngFor="let friend of friends">
