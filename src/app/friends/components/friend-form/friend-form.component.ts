@@ -17,6 +17,7 @@ export class FriendFormComponent implements OnInit {
         this.friendForm.patchValue(frnd);
         this.isEdit = true;
       });
+      this.availableFriends = this.availableFriends.filter((pal) => pal.name !== frnd.name)
     }
   };
   @Input() availableFriends: Friend[] = [];
