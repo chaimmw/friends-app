@@ -31,7 +31,7 @@ describe('FriendFormContainerComponent', () => {
     const actionSpy = spyOn(component.actionEnd, 'emit');
     component.formSubmit(friends[0]);
 
-    expect(actionSpy).toHaveBeenCalledWith(friends[0]);
+    expect(actionSpy).toHaveBeenCalledWith();
 
   });
 });

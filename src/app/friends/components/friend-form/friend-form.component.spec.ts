@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 import { myFakeFriends } from 'src/assets/friends-data';
 
 import { FriendFormComponent } from './friend-form.component';
@@ -7,15 +8,18 @@ describe('FriendFormComponent', () => {
   let component: FriendFormComponent;
   let fixture: ComponentFixture<FriendFormComponent>;
   const friend = myFakeFriends[0];
+  const friends = myFakeFriends;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FriendFormComponent ]
+      declarations: [ FriendFormComponent ],
+      providers: [FormBuilder]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(FriendFormComponent);
     component = fixture.componentInstance;
+    component.availableFriends = friends;
     fixture.detectChanges();
   });
 
@@ -24,11 +28,13 @@ describe('FriendFormComponent', () => {
   });
 
   it('should have an invalid form with errors on start', () => {
+    component.ngOnInit();
+    fixture.detectChanges();
     expect(component.friendForm.value).toEqual({
       name: null,
       age: null,
       weight: null,
-      friends: []
+      friends: null
     });
 
     const checkNameDirty = component.getFieldTouched('name');
@@ -44,10 +50,12 @@ describe('FriendFormComponent', () => {
       age: 78
     });
 
+    fixture.detectChanges();
+
     const submitSpy = spyOn(component.formComplete, 'emit');
     const checkAgeErrors = component.checkFieldError('age', 'required');
     const checkWeightErrors = component.checkFieldError('weight', 'required');
-    expect(component.friendForm.invalid).toBeFalse();
+    expect(component.friendForm.invalid).toBeTrue();
     expect(checkAgeErrors).toBeFalse();
     expect(checkWeightErrors).toBeTrue();
     expect(submitSpy).not.toHaveBeenCalled();
@@ -69,16 +77,13 @@ describe('FriendFormComponent', () => {
 
     component.submitForm();
     fixture.detectChanges();
-    expect(submitSpy).toHaveBeenCalledWith({
-      friend,
-      type: 'edit'
-    });
+    expect(submitSpy).toHaveBeenCalledWith(friend);
     expect(component.isEdit).toBeFalse();
     expect(component.friendForm.value).toEqual({
       name: null,
       age: null,
       weight: null,
-      friends: []
+      friends: null
     });
   });
 });

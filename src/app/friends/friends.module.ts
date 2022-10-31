@@ -7,8 +7,6 @@ import { FriendListComponent } from './components/friend-list/friend-list.compon
 
 import { StoreModule } from '@ngrx/store';
 import * as fromFriends from './friends-store/friends.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { FriendsEffects } from './friends-store/friends.effects';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -45,8 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
 
 
-    StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),
-    EffectsModule.forFeature([FriendsEffects])
+    StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer)
   ],
   exports: [FriendListComponent, FriendFormContainerComponent],
   providers: [FriendService]

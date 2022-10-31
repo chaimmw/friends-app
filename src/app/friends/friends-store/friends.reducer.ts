@@ -16,7 +16,6 @@ export const adapter: EntityAdapter<Friend> = createEntityAdapter<Friend>({
 });
 
 export function selectUserId(f: Friend): string {
-  //In this case this would be optional since primary key is id
   return f.name + f.age;
 }
 

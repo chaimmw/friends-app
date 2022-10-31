@@ -16,16 +16,22 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'friends-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('friends-app');
-  });
 
-  it('should render title', () => {
+
+  it('should toggle the list view', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('friends-app app is running!');
+
+    expect(component.showList).toBeTrue();
+
+    spyOn(component, 'toggleList').and.callThrough();
+    component.toggleList();
+
+    fixture.detectChanges();
+
+    expect(component.showList).toBeFalse();
+    expect(component.toggleList).toHaveBeenCalled();
+
   });
 });

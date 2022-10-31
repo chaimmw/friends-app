@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EventActions, FriendAction } from 'src/app/models/actions.model';
 import { Friend } from 'src/app/models/friend.model';
 
 @Component({
@@ -14,11 +13,22 @@ export class FriendFormComponent implements OnInit {
   @Input() set friend(frnd: Friend | null) {
     if (frnd) {
       this.isEdit = true;
-      this.friendForm.setValue(frnd)
+      const {
+        name,
+        age,
+        weight,
+        friends
+      } = frnd;
+      this.friendForm.setValue({
+        name,
+        age,
+        weight,
+        friends
+      });
     }
   };
   @Input() availableFriends: Friend[] = [];
-  @Output() formComplete = new EventEmitter<FriendAction>();
+  @Output() formComplete = new EventEmitter<Friend>();
   friendForm: FormGroup;
   isEdit = false;
   constructor(private formBuilder: FormBuilder) { }

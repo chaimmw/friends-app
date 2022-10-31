@@ -24,9 +24,8 @@ describe('FriendCardComponent', () => {
   });
 
   it('should emit when an action is called', () => {
-    component.sendAction(friend, 'edit');
-
     const eventSpy = spyOn(component.actionEvent, 'emit')
+    component.sendAction(friend, 'edit');
 
     expect(eventSpy).toHaveBeenCalledWith({ type: 'edit', friend })
 
