@@ -7,7 +7,7 @@ serve:
 `ng serve friends-app`
 
 to test: 
-`npx nx run test friends-app`
+`npx nx test friends-app`
 
 check out the app - fully reactive, stateless components (Thanks to NGRX magic), D3 and Angular Material, I hope you like it.
 
