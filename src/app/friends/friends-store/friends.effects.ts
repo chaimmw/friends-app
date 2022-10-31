@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
 import { concatMap, tap } from 'rxjs/operators';
-import { Observable, EMPTY } from 'rxjs';
+import { Observable, EMPTY, of } from 'rxjs';
 
 import * as FriendsActions from './friends.actions';
 
@@ -16,10 +16,7 @@ export class FriendsEffects {
     return this.actions$.pipe(
 
       ofType(FriendsActions.deleteFriend),
-      tap((action) => {
-        this.store.dispatch(FriendsActions.removeFriendsFriend({ id: action.id }))
-      }),
-      concatMap(() => EMPTY as Observable<{ type: string }>)
+      concatMap((action) => of(FriendsActions.removeFriendsFriend({ id: action.id })))
     );
   });
 
