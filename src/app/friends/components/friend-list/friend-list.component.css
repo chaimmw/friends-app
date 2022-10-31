@@ -2,3 +2,9 @@
 .container {
   margin: 50px 10%;
 }
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5%;
+}

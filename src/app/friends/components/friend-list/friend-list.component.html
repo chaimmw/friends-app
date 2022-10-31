@@ -16,6 +16,7 @@
 <div class="chart-container">
   <ng-container *ngIf="friends$ | async as friends">
     <app-bar-chart [chartData]="friends"></app-bar-chart>
+    <app-pie-chart [chartData]="friends"></app-pie-chart>
   </ng-container>
 
 </div>

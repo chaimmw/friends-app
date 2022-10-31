@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FriendService } from '../services/friend.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 
 
@@ -28,7 +29,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     FriendCardComponent,
     FriendFormContainerComponent,
     FriendListComponent,
-    BarChartComponent
+    BarChartComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,
