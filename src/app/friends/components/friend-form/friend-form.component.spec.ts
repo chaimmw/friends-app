@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { myFakeFriends } from 'src/assets/friends-data';
 
@@ -12,10 +17,9 @@ describe('FriendFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FriendFormComponent ],
-      providers: [FormBuilder]
-    })
-    .compileComponents();
+      declarations: [FriendFormComponent],
+      providers: [FormBuilder],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FriendFormComponent);
     component = fixture.componentInstance;
@@ -34,7 +38,7 @@ describe('FriendFormComponent', () => {
       name: null,
       age: null,
       weight: null,
-      friends: null
+      friends: null,
     });
 
     const checkNameDirty = component.getFieldTouched('name');
@@ -47,7 +51,7 @@ describe('FriendFormComponent', () => {
   it('should set errors when there and not submit if button clicked', () => {
     component.friendForm.patchValue({
       name: 'foo',
-      age: 78
+      age: 78,
     });
 
     fixture.detectChanges();
@@ -62,8 +66,10 @@ describe('FriendFormComponent', () => {
     expect(component.isEdit).toBeFalse();
   });
 
-  it('should set the values of the form to the friend', () => {
+  it('should set the values of the form to the friend', fakeAsync(() => {
     component.friend = friend;
+    tick(10);
+    fixture.detectChanges();
 
     const submitSpy = spyOn(component.formComplete, 'emit');
     const checkAgeErrors = component.checkFieldError('age', 'required');
@@ -83,7 +89,7 @@ describe('FriendFormComponent', () => {
       name: null,
       age: null,
       weight: null,
-      friends: null
+      friends: null,
     });
-  });
+  }));
 });

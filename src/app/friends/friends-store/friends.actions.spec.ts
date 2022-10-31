@@ -38,7 +38,7 @@ describe('loadFriendss', () => {
   it('should call the update with the right payload', () => {
     const update = {
       id: 'bob',
-      changes: friend,
+      ...friend,
     };
     const updateAction = fromFriends.updateFriend({ update });
 

@@ -11,6 +11,7 @@ export class FriendServiceStub {
     }))
   );
   selectedFriend = new BehaviorSubject(myFakeFriends[0]);
+  selectedFriendId = new BehaviorSubject('Michael Jordan55');
 
 
   addFriend(friend: Friend) { }
