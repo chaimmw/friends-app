@@ -29,7 +29,7 @@ export class FriendListComponent implements OnInit {
               map((myBuddies) => ({
                 ...myBud,
                 // just to check that they were not deleted
-                // until we can get the reducer update working
+                // until we can do that in the reducer
                 friendsNames: myBuddies.map((pal) => pal?.name).filter((pal) => !!pal),
               }))
             );
