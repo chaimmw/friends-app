@@ -20,6 +20,8 @@ import { FriendService } from '../services/friend.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { EffectsModule } from '@ngrx/effects';
+import { FriendsEffects } from './friends-store/friends.effects';
 
 
 
@@ -47,7 +49,8 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     BrowserAnimationsModule,
 
 
-    StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer)
+    StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer),
+    EffectsModule.forFeature([FriendsEffects])
   ],
   exports: [FriendListComponent, FriendFormContainerComponent, BarChartComponent],
   providers: [FriendService]

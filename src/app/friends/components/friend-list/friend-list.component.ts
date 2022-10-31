@@ -28,9 +28,7 @@ export class FriendListComponent implements OnInit {
               take(1),
               map((myBuddies) => ({
                 ...myBud,
-                // just to check that they were not deleted
-                // until we can do that in the reducer
-                friendsNames: myBuddies.map((pal) => pal?.name).filter((pal) => !!pal),
+                friendsNames: myBuddies.map((pal) => pal?.name),
               }))
             );
           } else {

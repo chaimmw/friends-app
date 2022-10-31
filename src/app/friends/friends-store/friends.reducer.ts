@@ -27,5 +27,9 @@ export const reducer = createReducer(
   on(FriendsActions.addFriend, (state, { friend }) => adapter.addOne(friend, state)),
   on(FriendsActions.updateFriend, (state, { update }) => adapter.updateOne({id: update.id as string, changes: update}, { ...state, selectedId: null})),
   on(FriendsActions.deleteFriend, (state, { id }) => adapter.removeOne(id, state)),
-  on(FriendsActions.editFriend, (state, { id }) => ({ ...state, selectedId: id}))
-);
+  on(FriendsActions.editFriend, (state, { id }) => ({ ...state, selectedId: id})),
+  on(FriendsActions.removeFriendsFriend, (state, { id }) => adapter.map((entity) => ({
+    ...entity,
+    friends: entity.friends.filter((pal) => id !== pal)
+  }), state)
+));

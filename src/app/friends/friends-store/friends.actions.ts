@@ -27,5 +27,11 @@ export const updateFriend = createAction(
 );
 
 
+export const removeFriendsFriend = createAction(
+  '[Friends] Remove Friend from Friends',
+  props<{ id: string }>()
+);
+
+
 
 

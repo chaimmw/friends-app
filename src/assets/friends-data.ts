@@ -8,7 +8,7 @@ export const myFakeFriends: Friend[] = [
     friends: ['Michael Jordan55', 'Mickey Mouse8']
   },
   {
-    name: 'Micheal Jordan',
+    name: 'Michael Jordan',
     age: 55,
     weight: 100,
     friends: []
