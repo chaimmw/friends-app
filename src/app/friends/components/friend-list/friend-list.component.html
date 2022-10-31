@@ -12,3 +12,10 @@
     </ng-container>
   </mat-grid-list>
 </div>
+
+<div class="chart-container">
+  <ng-container *ngIf="friends$ | async as friends">
+    <app-bar-chart [chartData]="friends"></app-bar-chart>
+  </ng-container>
+
+</div>

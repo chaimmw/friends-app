@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FriendService } from '../services/friend.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 
 
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FriendFormComponent,
     FriendCardComponent,
     FriendFormContainerComponent,
-    FriendListComponent
+    FriendListComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     StoreModule.forFeature(fromFriends.friendsFeatureKey, fromFriends.reducer)
   ],
-  exports: [FriendListComponent, FriendFormContainerComponent],
+  exports: [FriendListComponent, FriendFormContainerComponent, BarChartComponent],
   providers: [FriendService]
 })
 export class FriendsModule { }

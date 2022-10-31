@@ -27,6 +27,7 @@
     "@ngrx/router-store": "~13.0.0",
     "@ngrx/store": "~13.0.0",
     "@nrwl/angular": "^13.10.0",
+    "d3": "^7.6.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -38,6 +39,7 @@
     "@ngrx/schematics": "~13.0.0",
     "@ngrx/store-devtools": "~13.0.0",
     "@nrwl/workspace": "13.10.0",
+    "@types/d3": "^7.4.0",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "jasmine-marbles": "~0.9.1",
