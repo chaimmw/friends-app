@@ -1,4 +1,3 @@
-import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Friend } from 'src/app/models/friend.model';
 
@@ -24,7 +23,7 @@ export const editFriend = createAction(
 
 export const updateFriend = createAction(
   '[Friends] Update Friend',
-  props<{ update: Update<Friend> }>()
+  props<{ update: Friend }>()
 );
 
 

@@ -16,6 +16,7 @@ export class FriendService {
   );
   getMyFriends = (friendIds: string[]) => this.store.select(friendSelectors.getFriends(friendIds));
   selectedFriend = this.store.select(friendSelectors.getSelectedFriend);
+  selectedFriendId = this.store.select(friendSelectors.getSelectedFriendId);
 
 
   constructor(private store: Store) {
@@ -36,10 +37,10 @@ export class FriendService {
     this.store.dispatch(friendActions.editFriend({ id }));
   }
 
-  updateFriend(id: string, friend: Partial<Friend>) {
+  updateFriend(id: string, friend: Friend) {
     const payload = {
       id,
-      changes: friend
+      ...friend
     };
 
     this.store.dispatch(friendActions.updateFriend({ update: payload}));

@@ -30,7 +30,7 @@
     <mat-divider inset></mat-divider>
     <mat-card-actions class="card-actions-row">
       <!-- removed until update reducer is fixed -->
-      <!-- <button mat-button (click)="sendAction(friend, 'edit')">Edit</button> -->
+      <button mat-stroked-button color="primary" (click)="sendAction(friend, 'edit')">Edit</button>
       <button class="action-button" mat-raised-button color="primary" (click)="sendAction(friend, 'delete')">Delete</button>
     </mat-card-actions>
     <mat-card-footer>

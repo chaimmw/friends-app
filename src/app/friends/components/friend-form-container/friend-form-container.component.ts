@@ -11,6 +11,7 @@ import { FriendService } from 'src/app/services/friend.service';
 export class FriendFormContainerComponent implements OnInit {
   friends$: Observable<Friend[]>;
   selectedFriend$: Observable<Friend>;
+  selectedFriendId$: Observable<string>;
   @Output() actionEnd = new EventEmitter();
   constructor(private friendsService: FriendService) {}
 
@@ -20,17 +21,19 @@ export class FriendFormContainerComponent implements OnInit {
     );
     this.selectedFriend$ = this.friendsService
       .selectedFriend as Observable<Friend>;
+      this.selectedFriendId$ = this.friendsService
+      .selectedFriendId as Observable<string>;
   }
 
   formSubmit(data: any) {
-    this.selectedFriend$
+    this.selectedFriendId$
       .pipe(
-        tap((frnd) =>
-          frnd
-            ? this.friendsService.updateFriend(frnd.id as string, data)
+        take(1),
+        tap((id) =>
+          id
+            ? this.friendsService.updateFriend(id as string, data)
             : this.friendsService.addFriend(data)
         ),
-        take(1)
       )
       .subscribe(() => this.actionEnd.emit());
   }

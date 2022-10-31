@@ -11,19 +11,11 @@ import { Friend } from 'src/app/models/friend.model';
 export class FriendFormComponent implements OnInit {
 
   @Input() set friend(frnd: Friend | null) {
+    this.buildForm();
     if (frnd) {
-      this.isEdit = true;
-      const {
-        name,
-        age,
-        weight,
-        friends
-      } = frnd;
-      this.friendForm.setValue({
-        name,
-        age,
-        weight,
-        friends
+      setTimeout(() => {
+        this.friendForm.patchValue(frnd);
+        this.isEdit = true;
       });
     }
   };
@@ -34,10 +26,14 @@ export class FriendFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm() {
     this.friendForm = this.formBuilder.group({
-      name: [this.friend?.name, [Validators.required]],
-      age: [this.friend?.age, [Validators.required, Validators.min(0)]],
-      weight: [this.friend?.weight, [Validators.required, Validators.min(0)]],
+      name: [null, [Validators.required]],
+      age: [null, [Validators.required, Validators.min(0)]],
+      weight: [null, [Validators.required, Validators.min(0)]],
       friends: []
     });
   }

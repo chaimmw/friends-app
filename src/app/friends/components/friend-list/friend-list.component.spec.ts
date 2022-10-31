@@ -33,6 +33,7 @@ describe('FriendListComponent', () => {
   it('should call the right action', () => {
     const editSpy = spyOn(friendService, 'editFriend');
     const deleteSpy = spyOn(friendService, 'deleteFriend');
+    const listActionSpy = spyOn(component.listAction, 'emit');
 
     const editAction = {
       type: EventActions.edit,
@@ -47,6 +48,7 @@ describe('FriendListComponent', () => {
     component.handleEvent(editAction);
 
     expect(editSpy).toHaveBeenCalled();
+    expect(listActionSpy).toHaveBeenCalled();
 
 
     component.handleEvent(deleteAction);

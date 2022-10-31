@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { forkJoin, map, Observable, of, switchMap, take } from 'rxjs';
 import { EventActions, FriendAction } from 'src/app/models/actions.model';
 import { Friend, FriendViewItem } from 'src/app/models/friend.model';
@@ -11,6 +11,7 @@ import { myFakeFriends } from 'src/assets/friends-data';
   styleUrls: ['./friend-list.component.css'],
 })
 export class FriendListComponent implements OnInit {
+  @Output() listAction = new EventEmitter();
   friends = myFakeFriends;
   friends$: Observable<any>;
 
@@ -48,6 +49,7 @@ export class FriendListComponent implements OnInit {
   handleEvent(cardAction: FriendAction) {
     if (cardAction.type === EventActions.edit) {
       this.friendService.editFriend(cardAction.friend.id as string);
+      this.listAction.emit();
     } else if (cardAction.type === EventActions.delete){
       this.friendService.deleteFriend(cardAction.friend.id as string);
     }
