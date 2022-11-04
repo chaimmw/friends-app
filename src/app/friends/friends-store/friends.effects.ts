@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 
-import { concatMap, tap } from 'rxjs/operators';
-import { Observable, EMPTY, of } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import * as FriendsActions from './friends.actions';
 
@@ -21,6 +20,6 @@ export class FriendsEffects {
   });
 
 
-  constructor(private actions$: Actions, private store: Store) {}
+  constructor(private actions$: Actions) {}
 
 }
