@@ -14,6 +14,8 @@ export class FriendService {
       id: key
     })))
   );
+
+  getFullyLoaded = this.store.select(friendSelectors.getAllFriendsData);
   getMyFriends = (friendIds: string[]) => this.store.select(friendSelectors.getFriends(friendIds));
   selectedFriend = this.store.select(friendSelectors.getSelectedFriend);
   selectedFriendId = this.store.select(friendSelectors.getSelectedFriendId);

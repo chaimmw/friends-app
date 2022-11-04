@@ -1,9 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { forkJoin, map, Observable, of, switchMap, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { EventActions, FriendAction } from 'src/app/models/actions.model';
-import { Friend, FriendViewItem } from 'src/app/models/friend.model';
 import { FriendService } from 'src/app/services/friend.service';
-import { myFakeFriends } from 'src/assets/friends-data';
 
 @Component({
   selector: 'app-friend-list',
@@ -12,36 +10,11 @@ import { myFakeFriends } from 'src/assets/friends-data';
 })
 export class FriendListComponent implements OnInit {
   @Output() listAction = new EventEmitter();
-  friends = myFakeFriends;
   friends$: Observable<any>;
-
-  friendWData: FriendViewItem[];
   constructor(private friendService: FriendService) {}
 
   ngOnInit(): void {
-    this.friends$ = this.friendService.allFriends$.pipe(
-      switchMap((buddies) => {
-        const getFriendData = buddies.map((buddy) => {
-          const myBud = buddy as Friend;
-          if (myBud.friends?.length > 0) {
-            return this.friendService.getMyFriends(myBud.friends).pipe(
-              take(1),
-              map((myBuddies) => ({
-                ...myBud,
-                friendsNames: myBuddies.map((pal) => pal?.name),
-              }))
-            );
-          } else {
-            return of({
-              ...myBud,
-              friendsNames: [],
-            });
-          }
-        });
-
-        return forkJoin(getFriendData);
-      })
-    );
+    this.friends$ = this.friendService.getFullyLoaded;
   }
 
   handleEvent(cardAction: FriendAction) {

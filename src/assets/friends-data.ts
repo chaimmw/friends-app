@@ -17,13 +17,13 @@ export const myFakeFriends: Friend[] = [
     name: 'Mickey Mouse',
     age: 8,
     weight: 26,
-    friends: ['Michael Jordan55', 'Mickey Mouse8']
+    friends: []
   },
   {
     name: 'Donald Duck',
     age: 45,
     weight: 500,
-    friends: []
+    friends: ['Michael Jordan55', 'Mickey Mouse8']
   },
   {
     name: 'Harry Potter',
